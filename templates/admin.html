@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusCare - Admin Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='adminstyle.css') }}">
+</head>
+
+<body>
+
+<nav>
+    <div>CampusCare</div>
+
+    <div>
+        <span>Admin</span>
+        <button type="button" onclick="window.location.href='/admin-logout'">
+    Logout
+</button>
+    </div>
+</nav>
+<section>
+    <h1>Admin Dashboard</h1>
+    <p>Manage and monitor student complaints.</p>
+</section>
+<section class="admin-summary-cards">
+
+    <div>
+        <h3>Total Complaints</h3>
+        <p>{{ total_complaints }}</p>
+    </div>
+
+    <div>
+        <h3>Pending</h3>
+        <p>{{ pending_count }}</p>
+    </div>
+
+    <div>
+        <h3>In Progress</h3>
+        <p>{{ in_progress_count }}</p>
+    </div>
+
+    <div>
+        <h3>Resolved</h3>
+        <p>{{ resolved_count }}</p>
+    </div>
+
+</section>
+
+<div class="complaint-filters">
+    <input type="text" id="searchComplaint" placeholder="Search complaint">
+
+    <select id="categoryFilter">
+        <option>All Categories</option>
+        <option>Internet/Wi-Fi</option>
+        <option>Classroom</option>
+        <option>Electrical</option>
+        <option>Hostel</option>
+        <option>Library</option>
+        <option>Cleanliness</option>
+        <option>Other</option>
+    </select>
+
+    <select id="statusFilter">
+        <option>All Status</option>
+        <option>Pending</option>
+        <option>In Progress</option>
+        <option>Resolved</option>
+    </select>
+</div>
+<section>
+    <h2>All Complaints</h2>
+
+    
+<table class="admin-complaints-table">
+    <tr>
+        <th>ID</th>
+        <th>Complaint</th>
+        <th>Location</th>
+        <th>Category</th>
+        <th>Status</th>
+    </tr>
+
+    {% for complaint in complaints %}
+    <tr
+    data-db-id="{{ complaint['id'] }}"
+    data-location="{{ complaint['location'] }}"
+    data-description="{{ complaint['description'] }}"
+    data-response="{{ complaint['admin_response'] or '' }}"
+>
+        <td>CC{{ "%04d"|format(complaints|length - loop.index + 1) }}</td>
+        <td>{{ complaint['title'] }}</td>
+        <td>{{ complaint['location'] }}</td>
+        <td>{{ complaint['category'] }}</td>
+        <td>{{ complaint['status'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+    <button id="viewAllBtn">View All Complaints</button>
+</section>
+
+
+<section class="admin-complaint-details">
+    <h2>Complaint Details</h2>
+
+    <p><strong>Complaint ID:</strong> <span id="detail-id">CC1001</span></p>
+    <p><strong>Complaint Title:</strong> <span id="detail-title">Wi-Fi not working</span></p>
+    <p><strong>Student:</strong> <span id="detail-student">Rahul</span></p>
+    <p><strong>Category:</strong> <span id="detail-category">Internet/Wi-Fi</span></p>
+    <p><strong>Location:</strong> <span id="detail-location">Computer Lab 2</span></p>
+    <p><strong>Description:</strong> <span id="detail-description">Wi-Fi is not working in Computer Lab 2.</span></p>
+
+    <form id="updateComplaintForm">
+        <input type="hidden" id="complaintDbId" name="complaint_id">
+
+        <label for="complaintStatus">Status</label>
+        <select id="complaintStatus" name="status">
+            <option value="Pending">Pending</option>
+            <option value="In Progress">In Progress</option>
+            <option value="Resolved">Resolved</option>
+        </select>
+
+        <br><br>
+
+        <label for="adminResponse">Admin Response</label>
+        <br>
+        <textarea id="adminResponse" name="admin_response"
+            placeholder="Write your response"></textarea>
+
+        <br><br>
+
+        <button type="submit" id="updateComplaintBtn">
+            Update Complaint
+        </button>
+    </form>
+</section>
+<section class="admin-statistics">
+    <h2>Complaint Statistics</h2>
+    <p>Complaints by category</p>
+
+    <div id="categoryChart">
+        <!-- Graph will be added here -->
+    </div>
+</section>
+
+<script id="category-data" type="application/json">
+    {{ category_counts | tojson }}
+</script>
+<script src="{{ url_for('static', filename='adminjs.js') }}"></script>
+</body>
+</html>

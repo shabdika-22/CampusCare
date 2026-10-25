@@ -1,0 +1,373 @@
+/* ==========================================================
+   CampusCare - Student Portal
+   Theme: Deep Green + Warm Cream + Terracotta accent
+   ========================================================== */
+
+:root {
+    --green-dark: #23443b;
+    --green-mid: #2f5a4e;
+    --green-soft: #e4eee8;
+    --cream: #f6f3eb;
+    --white: #ffffff;
+    --accent: #c96b4b;
+    --accent-dark: #b05a3c;
+    --text: #26332f;
+    --text-muted: #5f6f69;
+    --border: #dfe5e1;
+
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 10px rgba(35, 68, 59, 0.08);
+    --shadow-hover: 0 8px 22px rgba(35, 68, 59, 0.14);
+    --ease: all 0.25s ease;
+}
+
+/* ---------- Reset & Base ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Navbar ---------- */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 30px;
+    background-color: var(--green-dark);
+    color: var(--white);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+nav > div:first-child {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+nav > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+}
+
+nav span {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+nav button {
+    padding: 8px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--white);
+    font-size: 14px;
+    cursor: pointer;
+    transition: var(--ease);
+}
+
+nav button:hover {
+    background-color: var(--white);
+    color: var(--green-dark);
+}
+
+/* ---------- Sections ---------- */
+section {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h1 {
+    font-size: 34px;
+    color: var(--green-dark);
+    margin-bottom: 10px;
+    line-height: 1.25;
+}
+
+section h2 {
+    font-size: 22px;
+    color: var(--green-dark);
+    margin-bottom: 18px;
+}
+
+section p {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Main button-link (+ New Complaint) */
+section a {
+    display: inline-block;
+    padding: 11px 22px;
+    background-color: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 3px 8px rgba(201, 107, 75, 0.3);
+    transition: var(--ease);
+}
+
+section a:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(201, 107, 75, 0.35);
+}
+
+/* ---------- Summary Cards ---------- */
+.summary-cards {
+    display: flex;
+    gap: 20px;
+    padding-top: 10px;
+}
+
+.summary-cards > div {
+    flex: 1;
+    background-color: var(--green-soft);
+    padding: 22px;
+    border-radius: var(--radius);
+    border-left: 5px solid var(--green-dark);
+    box-shadow: var(--shadow);
+    transition: var(--ease);
+}
+
+.summary-cards > div:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+.summary-cards h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+.summary-cards p {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 0;
+    line-height: 1.2;
+}
+
+/* ---------- Complaint Form ---------- */
+.complaint-form {
+    background-color: var(--white);
+    margin: 20px auto;
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--accent);
+    animation: fadeUp 0.4s ease;
+}
+
+.complaint-form label {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--green-dark);
+}
+
+.complaint-form input,
+.complaint-form select,
+.complaint-form textarea {
+    width: 100%;
+    padding: 11px 12px;
+    margin-top: 6px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background-color: #fcfcfa;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    transition: var(--ease);
+}
+
+.complaint-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.complaint-form input:focus,
+.complaint-form select:focus,
+.complaint-form textarea:focus {
+    outline: none;
+    border-color: var(--green-dark);
+    background-color: var(--white);
+    box-shadow: 0 0 0 3px rgba(35, 68, 59, 0.15);
+}
+
+.complaint-form button {
+    padding: 12px 26px;
+    background-color: var(--accent);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: var(--ease);
+}
+
+.complaint-form button:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(201, 107, 75, 0.35);
+}
+
+.complaint-form button:active {
+    transform: translateY(0);
+}
+
+/* ---------- Complaints Table ---------- */
+.complaints-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.complaints-table th {
+    background-color: var(--green-dark);
+    color: var(--white);
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.4px;
+}
+
+.complaints-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 15px;
+}
+
+.complaints-table tr:last-child td {
+    border-bottom: none;
+}
+
+.complaints-table tr:nth-child(even) td {
+    background-color: #fafbf9;
+}
+
+.complaints-table tr:hover td {
+    background-color: var(--green-soft);
+}
+
+.complaints-table td,
+.complaints-table tr {
+    transition: background-color 0.2s ease;
+}
+
+/* ---------- Complaint Details ---------- */
+.complaint-details {
+    display: none;
+    background-color: var(--white);
+    margin: 20px auto 40px;
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.complaint-details p {
+    margin-bottom: 0;
+    padding: 11px 0;
+    font-size: 15px;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+}
+
+.complaint-details p:last-child {
+    border-bottom: none;
+}
+
+.complaint-details strong {
+    display: inline-block;
+    min-width: 150px;
+    color: var(--green-dark);
+}
+
+/* ---------- Animation ---------- */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    nav {
+        padding: 12px 18px;
+    }
+
+    nav > div:first-child {
+        font-size: 20px;
+    }
+
+    section {
+        padding: 22px 18px;
+    }
+
+    section h1 {
+        font-size: 26px;
+    }
+
+    .summary-cards {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .complaint-form,
+    .complaint-details {
+        margin-left: 18px;
+        margin-right: 18px;
+        padding: 20px;
+    }
+
+    .complaints-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .complaint-details strong {
+        display: block;
+        min-width: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    nav span {
+        display: none;
+    }
+}
+

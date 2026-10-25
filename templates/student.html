@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='studentstyle.css') }}">
+    <title>Campuscare</title>
+    
+</head>
+<body>
+    <nav>
+        <div>CampusCare</div>
+
+        <div>
+            <span>Welcome, Student</span>
+            <button type="button" onclick="window.location.href='/student-logout'">
+    Logout
+</button>
+        </div>
+    </nav>
+    <section>
+    <h1>Welcome, Student!</h1>
+
+    <p>
+        Have an issue on campus?
+        Submit your complaint and track its status.
+    </p>
+
+    <a href="#new-complaint" id="newComplaintBtn">+ New Complaint</a>
+    {% if submitted == "1" %}
+<section>
+    <p class="success-message">Complaint submitted successfully! 🎉</p>
+</section>
+{% endif %}
+</section>
+<section class="summary-cards">
+
+    <div>
+        <h3>Total Complaints</h3>
+        <p>{{ total_complaints }}</p>
+    </div>
+
+    <div>
+        <h3>Pending</h3>
+        <p>{{ pending_count }}</p>
+    </div>
+
+    <div>
+        <h3>Resolved</h3>
+        <p>{{ resolved_count }}</p>
+    </div>
+
+</section>
+<section id="new-complaint" class="complaint-form">
+
+    <h2>New Complaint</h2>
+
+    <form id="complaintForm" method="POST">
+
+    <div>
+        <label>Complaint Title</label>
+        <br>
+        <input type="text" name="title" id="complaintTitle" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label>Category</label>
+        <br>
+        <select name="category" id="complaintCategory">
+            <option>Internet/Wi-Fi</option>
+            <option>Classroom</option>
+            <option>Electrical</option>
+            <option>Hostel</option>
+            <option>Library</option>
+            <option>Cleanliness</option>
+            <option>Other</option>
+        </select>
+    </div>
+
+    <br>
+
+    <div>
+        <label>Location</label>
+        <br>
+        <input type="text" name="location" id="complaintLocation" required>
+    </div>
+
+    <br>
+
+    <div>
+        <label>Description</label>
+        <br>
+        <textarea name="description" id="complaintDescription" required></textarea>
+    </div>
+
+    <br>
+
+    <button type="submit">Submit Complaint</button>
+
+</form>
+
+</section>
+<section>
+
+    <h2>Recent Complaints</h2>
+
+<table class="complaints-table">
+    <tr>
+        <th>Complaint</th>
+        <th>Category</th>
+        <th>Date</th>
+        <th>Status</th>
+    </tr>
+
+    {% for complaint in complaints %}
+    <tr
+        data-id="CC{{ '%04d'|format(complaints|length - loop.index + 1) }}"
+        data-title="{{ complaint['title'] }}"
+        data-category="{{ complaint['category'] }}"
+        data-date="{{ complaint['date'] or '' }}"
+        data-status="{{ complaint['status'] }}"
+        data-location="{{ complaint['location'] }}"
+        data-description="{{ complaint['description'] }}"
+        data-response="{{ complaint['admin_response'] or '' }}"
+    >
+        <td>{{ complaint['title'] }}</td>
+        <td>{{ complaint['category'] }}</td>
+        <td>{{ complaint['date'] if 'date' in complaint.keys() and complaint['date'] else '—' }}</td>
+        <td>{{ complaint['status'] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</section>
+<section class="complaint-details">
+
+    <h2>Complaint Details</h2>
+
+    <p><strong>Complaint ID:</strong> CC1001</p>
+
+    <p><strong>Complaint Title:</strong> Wi-Fi not working</p>
+
+    <p><strong>Category:</strong> Internet/Wi-Fi</p>
+
+    <p><strong>Location:</strong> Computer Lab 2</p>
+
+    <p><strong>Date:</strong> 01-10-2026</p>
+
+    <p><strong>Description:</strong> Wi-Fi is not working in Computer Lab 2.</p>
+
+    <p><strong>Status:</strong> Pending</p>
+
+   <p>
+    <strong>Admin Response:</strong>
+    <span id="student-admin-response">No response yet.</span>
+</p>
+
+</section>
+<script src="{{ url_for('static', filename='studentjs.js') }}"></script>
+</body>
+</html>

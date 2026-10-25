@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CampusCare</title>
+
+    <link rel="stylesheet" href="../static/welcomecss.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <h2>CampusCare</h2>
+        <p>College Complaint Management System</p>
+    </nav>
+
+    <!-- Welcome Section -->
+    <section class="welcome-section">
+        <h1>Welcome to CampusCare</h1>
+        <p>
+            A simple platform to submit, manage,
+            and track college complaints.
+        </p>
+    </section>
+
+    <!-- Portal Selection -->
+    <section class="portal-section">
+        <h2>Get Started with CampusCare</h2>
+        <p>Select your role to continue</p>
+
+        <div class="portal-container">
+
+            <!-- Student Portal -->
+            <div class="portal-card">
+                <h3>Student Portal</h3>
+                <p>Submit complaints and track their status.</p>
+                <button type="button" onclick="window.location.href='/student-access'">
+                 Student Portal
+                </button>
+            </div>
+
+            <!-- Admin Portal -->
+            <div class="portal-card">
+                <h3>Admin Portal</h3>
+                <p>Manage complaints and update their status.</p>
+                
+<button type="button" id="openAdminPopup">
+    Admin Portal
+</button>
+
+            </div>
+
+        </div>
+    </section>
+
+    
+<!-- CampusCare Highlight Section -->
+<section class="highlight-section">
+    <p class="highlight-label">CAMPUSCARE</p>
+
+    <h2>One Campus.<br>One Platform.</h2>
+
+    <div class="highlight-line"></div>
+
+    <p class="highlight-text">
+        Making campus concerns easier to raise and manage.
+    </p>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <p>CampusCare | College Complaint Management System</p>
+    </footer>
+
+<!-- Admin Login Popup -->
+<div class="popup-overlay" id="adminPopup">
+
+    <div class="popup-box">
+
+        <button type="button" class="close-popup"
+                id="closeAdminPopup" aria-label="Close">
+            &times;
+        </button>
+
+        <h2>Admin Login</h2>
+        <p>Enter your admin credentials to continue.</p>
+
+        <form action="/admin-login" method="POST">
+
+            <div class="popup-field">
+                <label for="adminUsername">Username</label>
+                <input type="text" id="adminUsername"
+                       name="username"
+                       placeholder="Enter admin username" required>
+            </div>
+
+            <div class="popup-field">
+                <label for="adminPassword">Password</label>
+                <input type="password" id="adminPassword"
+                       name="password"
+                       placeholder="Enter admin password" required>
+            </div>
+
+            
+{% if admin_error %}
+<p id="adminLoginError" style="color: red;">Invalid admin username or password!</p>
+{% else %}
+<p id="adminLoginError" style="color: red;"></p>
+{% endif %}
+
+
+            <button type="submit">Login</button>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    const openAdminPopup = document.getElementById("openAdminPopup");
+    const adminPopup = document.getElementById("adminPopup");
+    const closeAdminPopup = document.getElementById("closeAdminPopup");
+
+    // Admin Portal button se popup open hoga
+    if (openAdminPopup && adminPopup) {
+        openAdminPopup.addEventListener("click", function () {
+            adminPopup.classList.add("active");
+        });
+    }
+
+    // Cross button se popup close hoga
+    if (closeAdminPopup && adminPopup) {
+        closeAdminPopup.addEventListener("click", function () {
+            adminPopup.classList.remove("active");
+        });
+    }
+
+    // Popup ke bahar click karne par close hoga
+    if (adminPopup) {
+        adminPopup.addEventListener("click", function (event) {
+            if (event.target === adminPopup) {
+                adminPopup.classList.remove("active");
+            }
+        });
+    }
+
+    // Escape key se popup close hoga
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && adminPopup) {
+            adminPopup.classList.remove("active");
+        }
+    });
+    
+    // Wrong login ke baad popup dobara open hoga
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.get("admin_error") === "1" && adminPopup) {
+        adminPopup.classList.add("active");
+    }
+
+</script>
+</body>
+</html>
+
+

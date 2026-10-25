@@ -1,0 +1,275 @@
+
+/* CampusCare - Student Access Page */
+
+:root {
+    --green-dark: #23443b;
+    --green-mid: #2f5a4e;
+    --green-soft: #e4eee8;
+    --cream: #f6f3eb;
+    --accent: #c96b4b;
+    --accent-dark: #b05a3c;
+    --text: #26332f;
+    --text-muted: #5f6f69;
+    --border: #dfe5e1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background-color: var(--cream);
+    color: var(--text);
+}
+
+/* Navigation Bar */
+nav {
+    background-color: var(--green-dark);
+    color: var(--cream);
+    padding: 18px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+nav h2 {
+    margin: 0;
+    font-size: 25px;
+}
+
+nav p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--green-soft);
+}
+
+/* Main Section */
+.access-section {
+    text-align: center;
+    padding: 55px 25px 65px;
+    min-height: 75vh;
+}
+
+.access-section h1 {
+    color: var(--green-dark);
+    font-size: 34px;
+    margin: 0 0 12px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin-bottom: 40px;
+}
+
+/* Cards Container */
+.access-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 28px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto 35px;
+}
+
+/* Individual Cards */
+.access-card {
+    background-color: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 25px;
+    width: 100%;
+    max-width: 390px;
+    flex: 1 1 300px;
+    box-shadow: 0 5px 18px rgba(35, 68, 59, 0.07);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 24px rgba(35, 68, 59, 0.12);
+}
+
+.access-card h2 {
+    color: var(--green-dark);
+    font-size: 23px;
+    margin: 0 0 15px;
+}
+
+.access-card p {
+    color: var(--text-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    min-height: 76px;
+    margin-bottom: 25px;
+}
+
+/* Buttons */
+.access-card button {
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.access-card button:hover {
+    background-color: var(--accent-dark);
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    color: var(--green-mid);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.back-link:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+}
+
+
+
+/* Mobile Screen */
+@media (max-width: 600px) {
+    nav {
+        padding: 16px 20px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .access-section {
+        padding: 40px 16px;
+    }
+
+    .access-section h1 {
+        font-size: 28px;
+    }
+
+    .access-container {
+        gap: 20px;
+    }
+
+    .access-card {
+        padding: 28px 20px;
+    }
+}
+
+/* Registration Popup Background */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Show Popup */
+.popup-overlay.active {
+    display: flex;
+}
+
+/* Popup Box */
+.popup-box {
+    position: relative;
+    background: #ffffff;
+    width: 100%;
+    max-width: 440px;
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+
+.popup-box h2 {
+    color: #23443b;
+    text-align: center;
+    margin: 0 0 10px;
+}
+
+.popup-subtitle {
+    color: #5f6f69;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+/* Close Button */
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    border: none;
+    background: transparent;
+    color: #5f6f69;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Form Fields */
+.popup-field {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.popup-field label {
+    display: block;
+    color: #26332f;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.popup-field input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #dfe5e1;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.popup-field input:focus {
+    border-color: #2f5a4e;
+}
+
+/* Create Account Button */
+.create-account-btn {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: 8px;
+    background: #c96b4b;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.create-account-btn:hover {
+    background: #b05a3c;
+}
+
+@media (max-width: 500px) {
+    .popup-box {
+        padding: 30px 20px 22px;
+    }
+}

@@ -1,0 +1,335 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #12372f;
+    color: #f6f3eb;
+    min-height: 100vh;
+}
+
+/* Navbar */
+nav {
+    background: #0d2923;
+    color: #f6f3eb;
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #345b4e;
+}
+
+nav h2 {
+    font-size: 27px;
+    letter-spacing: 0.5px;
+}
+
+nav p {
+    color: #c9d9d0;
+    font-size: 15px;
+}
+
+/* Welcome heading */
+.welcome-section {
+    text-align: center;
+    padding: 65px 20px 35px;
+    background: radial-gradient(
+        ellipse at top,
+        #285447 0%,
+        #12372f 72%
+    );
+}
+
+.welcome-section h1 {
+    font-size: clamp(32px, 4vw, 48px);
+    color: #f6f3eb;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.welcome-section p {
+    color: #cfddd5;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* Portal heading */
+.portal-section {
+    padding: 30px 20px 70px;
+    text-align: center;
+}
+
+.portal-section h2 {
+    color: #f6f3eb;
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.portal-section > p {
+    color: #c9d9d0;
+    margin-bottom: 30px;
+}
+
+/* Keep both cards together */
+.portal-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 28px;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+/* Individual cards */
+.portal-card {
+    flex: 1;
+    min-width: 0;
+    background: linear-gradient(145deg, #244b3f, #1b4036);
+    border: 1px solid #456c5d;
+    border-radius: 18px;
+    padding: 35px 24px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: transform 0.25s ease,
+                border-color 0.25s ease;
+}
+
+.portal-card:hover {
+    transform: translateY(-6px);
+    border-color: #c96b4b;
+}
+
+.portal-card h3 {
+    color: #f6f3eb;
+    font-size: 23px;
+    margin-bottom: 14px;
+}
+
+.portal-card p {
+    color: #cfddd5;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+/* Buttons */
+.portal-card button {
+    background: #c96b4b;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    padding: 13px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.portal-card button:hover {
+    background: #df805d;
+    transform: translateY(-2px);
+}
+
+
+
+
+/* CampusCare Highlight Section */
+.highlight-section {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 55px 20px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #12372f, #1d493e);
+    border-top: 1px solid #42695b;
+}
+
+.highlight-section .highlight-label {
+    color: #e8a184;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin: 0 0 15px;
+    text-align: center;
+}
+
+.highlight-section h2 {
+    color: #f6f3eb;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 750;
+    line-height: 1.2;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.highlight-section .highlight-line {
+    width: 75px;
+    height: 4px;
+    background: #c96b4b;
+    border-radius: 5px;
+    margin: 22px auto;
+}
+
+.highlight-section .highlight-text {
+    color: #d1e0d7;
+    font-size: 17px;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* Keep the highlight section centered on small screens */
+@media (max-width: 600px) {
+    .highlight-section {
+        padding: 40px 18px;
+    }
+
+    .highlight-section h2 {
+        font-size: 35px;
+    }
+
+    .highlight-section .highlight-text {
+        font-size: 15px;
+    }
+}
+
+
+/* Footer */
+footer {
+    background: #0d2923;
+    color: #c9d9d0;
+    padding: 22px 15px;
+    text-align: center;
+    border-top: 1px solid #345b4e;
+    font-size: 14px;
+}
+
+/* Mobile layout */
+@media (max-width: 650px) {
+    nav {
+        padding: 18px 5%;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-section {
+        padding: 45px 18px 30px;
+    }
+
+    .portal-container {
+        flex-direction: column;
+        max-width: 420px;
+    }
+
+    .portal-section h2 {
+        font-size: 25px;
+    }
+}
+
+/* Admin Login Popup */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.popup-overlay.active {
+    display: flex;
+}
+
+.popup-box {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    background: #1b4036;
+    border: 1px solid #456c5d;
+    border-radius: 18px;
+    padding: 35px 28px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+    color: #f6f3eb;
+}
+
+.popup-box h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.popup-box > p {
+    color: #cfddd5;
+    text-align: center;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #f6f3eb;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.popup-field {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.popup-field label {
+    display: block;
+    color: #e0e9e3;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.popup-field input {
+    width: 100%;
+    padding: 12px;
+    background: #12372f;
+    color: #f6f3eb;
+    border: 1px solid #456c5d;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+}
+
+.popup-field input:focus {
+    border-color: #e8a184;
+}
+
+.popup-box form > button {
+    width: 100%;
+    padding: 13px;
+    background: #c96b4b;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.popup-box form > button:hover {
+    background: #df805d;
+}
