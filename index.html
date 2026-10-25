@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CampusCare</title>
+
+    <link rel="stylesheet" href="static/welcomecss.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>CampusCare</h2>
+        <p>College Complaint Management System</p>
+    </nav>
+
+    <section class="welcome-section">
+        <h1>Welcome to CampusCare</h1>
+        <p>
+            A simple platform to submit, manage,
+            and track college complaints.
+        </p>
+    </section>
+
+    <section class="portal-section">
+        <h2>Get Started with CampusCare</h2>
+        <p>Select your role to continue</p>
+
+        <div class="portal-container">
+            <div class="portal-card">
+                <h3>Student Portal</h3>
+                <p>Submit complaints and track their status.</p>
+                <button type="button" onclick="showMessage()">
+                    Student Portal
+                </button>
+            </div>
+
+            <div class="portal-card">
+                <h3>Admin Portal</h3>
+                <p>Manage complaints and update their status.</p>
+                <button type="button" onclick="showMessage()">
+                    Admin Portal
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="highlight-section">
+        <p class="highlight-label">CAMPUSCARE</p>
+        <h2>One Campus.<br>One Platform.</h2>
+        <div class="highlight-line"></div>
+        <p class="highlight-text">
+            Making campus concerns easier to raise and manage.
+        </p>
+    </section>
+
+    <footer>
+        <p>CampusCare | College Complaint Management System</p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            alert("Please connect the CampusCare backend to use this feature.");
+        }
+    </script>
+
+</body>
+</html>
